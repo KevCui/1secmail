@@ -1,4 +1,4 @@
-# 1secmail
+# 1secmail ![CI](https://github.com/KevCui/1secmail/workflows/CI/badge.svg)
 
 > Use [1secmail](https://www.1secmail.com/) disposable temp mail service from terminal
 
