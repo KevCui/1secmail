@@ -7,9 +7,7 @@ BATS_TEST_SKIPPED=
 
 setup() {
     _SCRIPT="./1secmail"
-    _JQ="$(command -v jq)"
     _FAKER="$(command -v faker-cli)"
-
     source $_SCRIPT
 }
 
