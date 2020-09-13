@@ -1,6 +1,6 @@
 # 1secmail
 
-> Use [1secmail](https://www.1secmail.com/) disposable temp mail service in terminal.
+> Use [1secmail](https://www.1secmail.com/) disposable temp mail service from terminal
 
 # Table of Contents
 
