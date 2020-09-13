@@ -16,11 +16,11 @@
 #/   \e[32m- Generate a random inbox:\e[0m
 #/     ~$ ./1secmail
 #/
-#/   \e[32m- Get mails in test@1secmail.org inbox:\e[0m
-#/     ~$ ./1secmail \e[33m-i 'test@1secmail.org'\e[0m
+#/   \e[32m- Get mails in test@1secmail.com inbox:\e[0m
+#/     ~$ ./1secmail \e[33m-i 'test@1secmail.com'\e[0m
 #/
-#/   \e[32m- Show mail 897283223 detail: \e[0m
-#/     ~$ ./1secmail \e[33m-i 'test@1secmail.org' -m 897283223\e[0m
+#/   \e[32m- Show mail 84113380 detail: \e[0m
+#/     ~$ ./1secmail \e[33m-i 'test@1secmail.com' -m 84113380\e[0m
 #/
 #/   \e[32m- Show all available domains: \e[0m
 #/     ~$ ./1secmail \e[33m-s\e[0m
@@ -125,7 +125,7 @@ get_message() {
 
 show_domain() {
     # Show available domains
-    echo -e "1secmail.com\n1secmail.org\n1secmail.net"
+    echo -e "1secmail.com\n1secmail.com\n1secmail.net"
 }
 
 show_random_domain() {

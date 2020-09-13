@@ -59,16 +59,24 @@ zoie.brekke@1secmail.net
 7iaq6u32s@1secmail.com
 ```
 
-- Get mails in test@1secmail.org inbox:
+- Get mails in test@1secmail.com inbox:
 
 ```bash
-~$ ./1secmail -i 'test@1secmail.org'
+~$ ./1secmail -i 'test@1secmail.com'
+[
+  {
+    "id": 84113380,
+    "from": "0101017488b55e0a-474f-acb5-c5844b227792-000000@email-ses.com",
+    "subject": "Please confirm your email address",
+    "date": "2020-09-13 18:23:44"
+  }
+]
 ```
 
-- Show mail 897283223 detail:
+- Show mail 84113380 detail:
 
 ```bash
-~$ ./1secmail -i 'test@1secmail.org' -m 897283223
+~$ ./1secmail -i 'test@1secmail.com' -m 84113380
 ```
 
 - Show all available domains:
