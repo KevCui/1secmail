@@ -3,12 +3,13 @@
 # A script to use 1secmail temp mail service in terminal
 #
 #/ Usage:
-#/   ./1secmail [-i <inbox>|-m <id>|-s]
+#/   ./1secmail [-i <inbox>|-m <id>|-r|-s]
 #/
 #/ Options:
 #/   no option        Optional, randamly get an inbox
 #/   -i <inbox>       Optional, get an inbox by its mail address
 #/   -m <id>          Optional, show mail by its id
+#/   -r               Optional, show the most recent mail
 #/   -s               Optional, show available domains
 #/   -h | --help      Display this help message
 #/
@@ -21,6 +22,9 @@
 #/
 #/   \e[32m- Show mail 84113380 detail: \e[0m
 #/     ~$ ./1secmail \e[33m-i 'test@1secmail.com' -m 84113380\e[0m
+#/
+#/   \e[32m- Show the most recent mail: \e[0m
+#/     ~$ ./1secmail -i 'test@1secmail.com' \e[33m-r\e[0m
 #/
 #/   \e[32m- Show all available domains: \e[0m
 #/     ~$ ./1secmail \e[33m-s\e[0m
@@ -51,7 +55,7 @@ set_command() {
 set_args() {
     # Declare arguments
     expr "$*" : ".*--help" > /dev/null && usage
-    while getopts ":hsi:m:" opt; do
+    while getopts ":hrsi:m:" opt; do
         case $opt in
             i)
                 _INBOX="$OPTARG"
@@ -59,6 +63,9 @@ set_args() {
             m)
                 _MESSAGE_UID="$OPTARG"
                 _FLAG_GET_MESSAGE=true
+                ;;
+            r)
+                _FLAG_RECENT_MAIL=true
                 ;;
             s)
                 _FLAG_SHOW_DOMAIN=true
@@ -100,7 +107,20 @@ get_inbox() {
     local login domain
     login=$(awk -F '@' '{print $1}' <<< "$1")
     domain=$(awk -F '@' '{print $2}' <<< "$1")
-    $_CURL -sSL "${_INBOX_URL}&login=${login}&domain=${domain}" | $_JQ
+    $_CURL -sSL "${_INBOX_URL}&login=${login}&domain=${domain}" | $_JQ .
+}
+
+get_recent_message() {
+    # Get the most recent message
+    # $1: address
+    local messages
+    messages="$(get_inbox "$_INBOX")"
+    if [[ -z "$messages" ]]; then
+        echo "Message not found"
+        exit 0
+    else
+        get_message "$_INBOX" "$($_JQ -r '.[0].id' <<< "$messages")"
+    fi
 }
 
 get_message() {
@@ -155,6 +175,8 @@ main() {
         if [[ -n "${_INBOX:-}" ]]; then
             if [[ "${_FLAG_GET_MESSAGE:-}" == true ]]; then
                 get_message "$_INBOX" "${_MESSAGE_UID:-}"
+            elif [[ -n "${_FLAG_RECENT_MAIL:-}" ]]; then
+                get_recent_message "$_INBOX"
             else
                 get_inbox "$_INBOX"
             fi
