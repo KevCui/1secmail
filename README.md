@@ -10,6 +10,7 @@
   - [Usage](#usage)
   - [Examples](#examples)
 - [Run tests](#run-tests)
+- [Similar project](#similar-project)
 
 ## Feature
 
@@ -78,6 +79,7 @@ zoie.brekke@1secmail.net
 ```bash
 ~$ ./1secmail -i 'test@1secmail.com' -m 84113380
 <HTML content in w3m>
+...
 ```
 
 - Show all available domains:
@@ -91,6 +93,10 @@ zoie.brekke@1secmail.net
 ```bash
 ~$ bats test/1secmail.bats
 ```
+
+## Similar project
+
+Want more temp mail service? Check out [getnada](https://github.com/KevCui/getnada), you may like it!
 
 ---
 
