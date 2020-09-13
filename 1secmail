@@ -3,27 +3,27 @@
 # A script to use 1secmail temp mail service in terminal
 #
 #/ Usage:
-#/   ./onesecmail.sh [-i <inbox>|-m <uid>|-d <uid>|-s]
+#/   ./1secmail [-i <inbox>|-m <id>|-s]
 #/
 #/ Options:
 #/   no option        Optional, randamly get an inbox
 #/   -i <inbox>       Optional, get an inbox by its mail address
-#/   -m <uid>         Optional, show mail by its uid
+#/   -m <id>          Optional, show mail by its id
 #/   -s               Optional, show available domains
 #/   -h | --help      Display this help message
 #/
 #/ Examples:
 #/   \e[32m- Generate a random inbox:\e[0m
-#/     ~$ ./onesecmail.sh
+#/     ~$ ./1secmail
 #/
-#/   \e[32m- Get mails in test@1secmail.org:\e[0m
-#/     ~$ ./onesecmail.sh \e[33m-i 'test@1secmail.org'\e[0m
+#/   \e[32m- Get mails in test@1secmail.org inbox:\e[0m
+#/     ~$ ./1secmail \e[33m-i 'test@1secmail.org'\e[0m
 #/
 #/   \e[32m- Show mail 897283223 detail: \e[0m
-#/     ~$ ./onesecmail.sh \e[33m-i 'test@1secmail.org' -m 897283223\e[0m
+#/     ~$ ./1secmail \e[33m-i 'test@1secmail.org' -m 897283223\e[0m
 #/
 #/   \e[32m- Show all available domains: \e[0m
-#/     ~$ ./onesecmail.sh \e[33m-s\e[0m
+#/     ~$ ./1secmail \e[33m-s\e[0m
 
 set -e
 set -u

@@ -1,12 +1,12 @@
 #!/usr/bin/env bats
 #
 # How to run:
-#   ~$ bats test/onesecmail.bats
+#   ~$ bats test/1secmail.bats
 
 BATS_TEST_SKIPPED=
 
 setup() {
-    _SCRIPT="./onesecmail.sh"
+    _SCRIPT="./1secmail"
     _JQ="$(command -v jq)"
     _FAKER="$(command -v faker-cli)"
 
