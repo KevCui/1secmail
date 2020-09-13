@@ -77,6 +77,7 @@ zoie.brekke@1secmail.net
 
 ```bash
 ~$ ./1secmail -i 'test@1secmail.com' -m 84113380
+<HTML content in w3m>
 ```
 
 - Show all available domains:
