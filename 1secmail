@@ -128,11 +128,16 @@ show_domain() {
     echo -e "1secmail.com\n1secmail.org\n1secmail.net"
 }
 
+show_random_domain() {
+    # Show available domains in a random order
+    show_domain | shuf
+}
+
 get_random_inbox() {
     # Get a randam inbox
     local u d
     u=$(fake_username)
-    d=$(show_domain | shuf | tail -1)
+    d=$(show_random_domain | tail -1)
 
     get_inbox "$u@$d"
     echo "$u@$d"

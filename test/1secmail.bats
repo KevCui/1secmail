@@ -39,7 +39,7 @@ setup() {
     fake_username() {
         echo "JackMe"
     }
-    show_domain() {
+    show_random_domain() {
         echo "gmail.com"
         echo "msn.com"
         echo "test.com"
