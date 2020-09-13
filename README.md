@@ -1,10 +1,22 @@
 # 1secmail
 
-> Use [1secmail](https://www.1secmail.com/) temp mail service in terminal.
+> Use [1secmail](https://www.1secmail.com/) disposable temp mail service in terminal.
+
+# Table of Contents
+
+- [Feature](#feature)
+- [Dependency](#dependency)
+- [How to use](#how-to-use)
+  - [Usage](#usage)
+  - [Examples](#examples)
+- [Run tests](#run-tests)
 
 ## Feature
 
-- All information in terminal
+- Fast access to 1secmail service from terminal
+- Randomly generating email login
+- Easy to remember user name created by Faker
+- Simple integration to any CI process due to Bash script
 
 ## Dependency
 
@@ -14,6 +26,8 @@
 - [faker-cli](https://github.com/lestoni/faker-cli) (optional)
 
 ## How to use
+
+### Usage
 
 ```
 Usage:
