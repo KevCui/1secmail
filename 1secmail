@@ -3,12 +3,12 @@
 # A script to use 1secmail temp mail service in terminal
 #
 #/ Usage:
-#/   ./1secmail [-i <inbox>|-m <id>|-r|-s]
+#/   ./1secmail [-u <inbox>|-i <id>|-r|-s]
 #/
 #/ Options:
 #/   no option        Optional, randamly get an inbox
-#/   -i <inbox>       Optional, get an inbox by its mail address
-#/   -m <id>          Optional, show mail by its id
+#/   -u <inbox>       Optional, get an inbox by its mail address
+#/   -i <id>          Optional, show mail by its id
 #/   -r               Optional, show the most recent mail
 #/   -s               Optional, show available domains
 #/   -h | --help      Display this help message
@@ -18,13 +18,13 @@
 #/     ~$ ./1secmail
 #/
 #/   \e[32m- Get mails in test@1secmail.com inbox:\e[0m
-#/     ~$ ./1secmail \e[33m-i 'test@1secmail.com'\e[0m
+#/     ~$ ./1secmail \e[33m-u 'test@1secmail.com'\e[0m
 #/
 #/   \e[32m- Show mail 84113380 detail: \e[0m
-#/     ~$ ./1secmail \e[33m-i 'test@1secmail.com' -m 84113380\e[0m
+#/     ~$ ./1secmail \e[33m-u 'test@1secmail.com' -i 84113380\e[0m
 #/
 #/   \e[32m- Show the most recent mail: \e[0m
-#/     ~$ ./1secmail -i 'test@1secmail.com' \e[33m-r\e[0m
+#/     ~$ ./1secmail -u 'test@1secmail.com' \e[33m-r\e[0m
 #/
 #/   \e[32m- Show all available domains: \e[0m
 #/     ~$ ./1secmail \e[33m-s\e[0m
@@ -55,12 +55,12 @@ set_command() {
 set_args() {
     # Declare arguments
     expr "$*" : ".*--help" > /dev/null && usage
-    while getopts ":hrsi:m:" opt; do
+    while getopts ":hrsu:i:" opt; do
         case $opt in
-            i)
+            u)
                 _INBOX="$OPTARG"
                 ;;
-            m)
+            i)
                 _MESSAGE_UID="$OPTARG"
                 _FLAG_GET_MESSAGE=true
                 ;;

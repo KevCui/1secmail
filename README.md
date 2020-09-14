@@ -32,12 +32,12 @@
 
 ```
 Usage:
-  ./1secmail [-i <inbox>|-m <id>|-r|-s]
+  ./1secmail [-u <inbox>|-i <id>|-r|-s]
 
 Options:
   no option        Optional, randamly get an inbox
-  -i <inbox>       Optional, get an inbox by its mail address
-  -m <id>          Optional, show mail by its id
+  -u <inbox>       Optional, get an inbox by its mail address
+  -i <id>          Optional, show mail by its id
   -r               Optional, show the most recent mail
   -s               Optional, show available domains
   -h | --help      Display this help message
@@ -64,7 +64,7 @@ zoie.brekke@1secmail.net
 - Get mails in test@1secmail.com inbox:
 
 ```bash
-~$ ./1secmail -i 'test@1secmail.com'
+~$ ./1secmail -u 'test@1secmail.com'
 [
   {
     "id": 84113380,
@@ -78,7 +78,7 @@ zoie.brekke@1secmail.net
 - Show mail 84113380 detail:
 
 ```bash
-~$ ./1secmail -i 'test@1secmail.com' -m 84113380
+~$ ./1secmail -u 'test@1secmail.com' -i 84113380
 <HTML content in w3m>
 ...
 ```
@@ -86,7 +86,7 @@ zoie.brekke@1secmail.net
 - Show the most recent mail in `test@1secmail.com`:
 
 ```bash
-~$ ./1secmail -i 'test@1secmail.com' -r
+~$ ./1secmail -u 'test@1secmail.com' -r
 <HTML content in w3m>
 ...
 ```
