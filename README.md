@@ -32,7 +32,7 @@
 
 ```
 Usage:
-  ./1secmail [-u <inbox>|-i <id>|-r|-s]
+  ./1secmail [-u <inbox>|-i <id>|-r|-s|t]
 
 Options:
   no option        Optional, randamly get an inbox
@@ -40,6 +40,7 @@ Options:
   -i <id>          Optional, show mail by its id
   -r               Optional, show the most recent mail
   -s               Optional, show available domains
+  -t               Optional, show plain text without using w3m 
   -h | --help      Display this help message
 ```
 
