@@ -142,7 +142,12 @@ get_message() {
         if [[ -z $_W3M  || -n "${_FLAG_SHOW_TEXT:-}" ]]; then
             $_JQ -r '.htmlBody' <<< "$message"
         else
-            $_W3M -T "text/html" <<< "$($_JQ -r '.htmlBody' <<< "$message")"
+            local from subject date body
+            from="$($_JQ -r ".from" <<< "$message")"
+            subject="$($_JQ -r ".subject" <<< "$message")"
+            date="$(jq -r ".date" <<< "$message")"
+            body="$(jq -r ".htmlBody" <<< "$message")"
+            $_W3M -T "text/html" <<< "<pre><b>Date:</b> ${date}<br/><b>From:</b> ${from}<br/><b>To:</b> ${1}<br/><b>Subject:</b> ${subject}</pre>${body}"
         fi
     fi
 }
