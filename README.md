@@ -35,7 +35,7 @@ Usage:
   ./1secmail [-u <inbox>|-i <id>|-r|-s|t]
 
 Options:
-  no option        Optional, randamly get an inbox
+  no option        Randamly get an inbox
   -u <inbox>       Optional, get an inbox by its mail address
   -i <id>          Optional, show mail by its id
   -r               Optional, show the most recent mail
