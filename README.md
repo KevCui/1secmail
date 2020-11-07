@@ -49,7 +49,7 @@ Options:
 - Generate a random inbox with `faker-cli`:
 
 ```bash
-~$ ./1secmail
+$ ./1secmail
 []
 zoie.brekke@1secmail.net
 ```
@@ -57,7 +57,7 @@ zoie.brekke@1secmail.net
 - Generate a random inbox without `faker-cli`:
 
 ```bash
-~$ ./1secmail
+$ ./1secmail
 []
 7iaq6u32s@1secmail.com
 ```
@@ -65,7 +65,7 @@ zoie.brekke@1secmail.net
 - Get mails in test@1secmail.com inbox:
 
 ```bash
-~$ ./1secmail -u 'test@1secmail.com'
+$ ./1secmail -u 'test@1secmail.com'
 [
   {
     "id": 84113380,
@@ -79,7 +79,7 @@ zoie.brekke@1secmail.net
 - Show mail 84113380 detail:
 
 ```bash
-~$ ./1secmail -u 'test@1secmail.com' -i 84113380
+$ ./1secmail -u 'test@1secmail.com' -i 84113380
 <HTML content in w3m>
 ...
 ```
@@ -87,7 +87,7 @@ zoie.brekke@1secmail.net
 - Show the most recent mail in `test@1secmail.com`:
 
 ```bash
-~$ ./1secmail -u 'test@1secmail.com' -r
+$ ./1secmail -u 'test@1secmail.com' -r
 <HTML content in w3m>
 ...
 ```
@@ -95,13 +95,13 @@ zoie.brekke@1secmail.net
 - Show all available domains:
 
 ```bash
-~$ ./1secmail -s
+$ ./1secmail -s
 ```
 
 ## Run tests
 
 ```bash
-~$ bats test/1secmail.bats
+$ bats test/1secmail.bats
 ```
 
 ## Similar project
