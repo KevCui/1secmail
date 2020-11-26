@@ -10,7 +10,7 @@
   - [Usage](#usage)
   - [Examples](#examples)
 - [Run tests](#run-tests)
-- [Similar project](#similar-project)
+- [Similar projects](#similar-projects)
 
 ## Feature
 
