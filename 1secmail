@@ -155,6 +155,7 @@ get_message() {
 show_domain() {
     # Show available domains
     echo -e "1secmail.com\n1secmail.com\n1secmail.net\nwwjmp.com\nesiix.com"
+    echo -e "xojxe.com\nyoggm.com\noosln.com\nvddaz.com"
 }
 
 show_random_domain() {
