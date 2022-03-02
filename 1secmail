@@ -3,7 +3,7 @@
 # A script to use 1secmail temp mail service in terminal
 #
 #/ Usage:
-#/   ./1secmail [-u <inbox>|-i <id>|-r|-s|-t]
+#/   ./1secmail [-u <inbox>|-i <id>|-r|-s|-t|-b]
 #/
 #/ Options:
 #/   no option        Randamly get an inbox
@@ -12,6 +12,7 @@
 #/   -r               Optional, show the most recent mail
 #/   -s               Optional, show available domains
 #/   -t               Optional, show plain text without using w3m
+#/   -b               Optional, show data URL with base64 encoded message
 #/   -h | --help      Display this help message
 #/
 #/ Examples:
@@ -56,7 +57,7 @@ set_command() {
 set_args() {
     # Declare arguments
     expr "$*" : ".*--help" > /dev/null && usage
-    while getopts ":hrstu:i:" opt; do
+    while getopts ":hrstbu:i:" opt; do
         case $opt in
             u)
                 _INBOX="$OPTARG"
@@ -73,6 +74,9 @@ set_args() {
                 ;;
             t)
                 _FLAG_SHOW_TEXT=true
+                ;;
+            b)
+                _FLAG_SHOW_B64=true
                 ;;
             h)
                 usage
@@ -141,12 +145,14 @@ get_message() {
     else
         if [[ -z $_W3M  || -n "${_FLAG_SHOW_TEXT:-}" ]]; then
             $_JQ -r '.htmlBody' <<< "$message"
+        elif [[ -n "${_FLAG_SHOW_B64:-}" ]]; then
+            echo "data:text/html;base64,$($_JQ -r ".htmlBody" <<< "$message" | base64)"
         else
             local from subject date body
             from="$($_JQ -r ".from" <<< "$message")"
             subject="$($_JQ -r ".subject" <<< "$message")"
-            date="$(jq -r ".date" <<< "$message")"
-            body="$(jq -r ".htmlBody" <<< "$message")"
+            date="$($_JQ -r ".date" <<< "$message")"
+            body="$($_JQ -r ".htmlBody" <<< "$message")"
             $_W3M -T "text/html" <<< "<pre><b>Date:</b> ${date}<br/><b>From:</b> ${from}<br/><b>To:</b> ${1}<br/><b>Subject:</b> ${subject}</pre>${body}"
         fi
     fi
