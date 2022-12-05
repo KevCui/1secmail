@@ -160,8 +160,7 @@ get_message() {
 
 show_domain() {
     # Show available domains
-    echo -e "1secmail.com\n1secmail.com\n1secmail.net\nwwjmp.com\nesiix.com"
-    echo -e "xojxe.com\nyoggm.com\noosln.com\nvddaz.com"
+    "$_CURL" -sS 'https://www.1secmail.com/api/v1/?action=getDomainList' | "$_JQ" -r '.[]'
 }
 
 show_random_domain() {
